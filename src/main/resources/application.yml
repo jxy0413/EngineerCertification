@@ -1,0 +1,79 @@
+server:
+  port: 8081 # \u7AEF\u53E3
+spring:
+  servlet:
+    multipart:
+      max-file-size: 32MB
+      max-request-size: 32MB
+  jackson:
+    time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://47.92.212.63:3306/engineerCertification?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: bjfu1022
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      max-active: 20
+      max-pool-prepared-statement-per-connection-size: 20
+      max-wait: 60000
+      min-evictable-idle-time-millis: 300000
+      min-idle: 5
+      pool-prepared-statements: true
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      async-init: true
+      time-between-eviction-runs-millis: 60000
+
+      #开启后台监控页
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: druid@1022!CHAOS
+        reset-enable: false
+      #开启web监控
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      #监控springBean
+      aop-patterns: com.bjfu.forestreserves.*
+      #开启底层功能
+      filters: stat,wall,slf4j
+      #开启功能的详细配置
+      filter:
+        stat:
+          enabled: true
+          slow-sql-millis: 5000
+          log-slow-sql: true
+        wall:
+          enabled: true
+
+  ###Redis
+  redis:
+    host: 8.131.51.151
+    port: 29736
+    password: myRedis1022
+
+###JWT
+jwt:
+  authorised-urls: /api/**  #no use
+  EXPIRATION_TIME: 1000000  #过期时间
+  SECRET: A0B1C2D3E4F5G6H7I8J9KALBMCNDOEPFQ0R1S2T3U4V5W6X7Y8Z9  #密钥
+  TOKEN_PREFIX: Bearer  #token前缀
+  HEADER_STRING: Authorization  #请求体key
+
+#oos:
+#  endpoint: oss-cn-beijing.aliyuncs.com
+#  keyid:    LTAI4G7Qbocb4AeE37ATq4eW # 填写刚刚生成的AccessKey
+#  keysecret: 4oFbUQ45HAdKlq78xxYiKQsca4cpmi  # 填写刚刚生成的AccessSecret
+#  bucketname: forestry1022 # bucket名称
+#  filehost: root    #bucket下文件夹的路径
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
