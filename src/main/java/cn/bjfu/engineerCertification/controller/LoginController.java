@@ -6,15 +6,12 @@ import cn.bjfu.engineerCertification.model.RetResultEnum;
 import cn.bjfu.engineerCertification.service.LoginService;
 import cn.bjfu.engineerCertification.utils.JwtHelper;
 import com.alibaba.fastjson.JSONObject;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 import java.util.HashMap;
 
 /**
